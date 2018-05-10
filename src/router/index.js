@@ -18,7 +18,6 @@ const router = (
         <Route path="/about" component={About}>
         </Route>
       </Switch>
-      <Redirect from="/" to="/movie"/> {/*重定向*/}
     </App>
   </Router>
 )
