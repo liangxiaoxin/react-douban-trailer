@@ -22,6 +22,22 @@ class All extends Component {
 
   }
   render() {
+    const CalculateFullStar = (rate) =>  {
+      let fullStar = Math.floor(rate)/2
+      let starAll = []
+      for (let i=0;i<=5;i++) {
+        if (i<=fullStar) {
+          starAll.push(1)
+        }else {
+          starAll.push(0)
+        }
+      }
+      return (
+        starAll.map((item,index)=>
+          item == 1 ? <span key={index} className={'rating-star rating-star-small-full'}></span> : <span key={index}  className={'rating-star rating-star-small-empty'}></span>
+        )
+      );
+    }
     return (
       <div>
         <h1 className={'title'}>所有影片</h1>
@@ -34,11 +50,7 @@ class All extends Component {
                   <h3>{item.title}</h3>
                   <p className={'remark'}>
                     <span className={'rating-stars'}>
-                      <span className={'rating-star rating-star-small-full'}></span>
-                      <span className={'rating-star rating-star-small-full'}></span>
-                      <span className={'rating-star rating-star-small-full'}></span>
-                      <span className={'rating-star rating-star-small-full'}></span>
-                      <span className={'rating-star rating-star-small-empty'}></span>
+                      {CalculateFullStar(item.rate)}
                     </span>
                     <span className={'rate'}>{item.rate}</span>
                   </p>
