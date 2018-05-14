@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {getUserInfo} from '../../api'
-class About extends Component {
+class Tags extends Component {
   constructor(props) {
     super(props);
   }
@@ -9,9 +9,9 @@ class About extends Component {
       console.log(res);
     })
     return (
-      <h1>关于我的</h1>
+      <h1>影片分类</h1>
     );
   }
 }
 
-export default About;
+export default Tags;

@@ -11,14 +11,17 @@ class App extends Component {
     return (
       <div className={'app-container'}>
         <header className={'c-header'}>
-          <h1 className={'app-title'}>豆瓣</h1>
+          <h1 className={'app-title'}>豆瓣电影</h1>
           <nav>
             <ul className={'header-nav'}>
               <li>
-                <NavLink to="/about">我的</NavLink>
+                <NavLink to="/movie">所有影片</NavLink>
               </li>
               <li>
-                <NavLink to="/movie">影片</NavLink>
+                <NavLink to="/tags">分类</NavLink>
+              </li>
+              <li>
+                <NavLink to="/annual">年度榜单</NavLink>
               </li>
             </ul>
           </nav>

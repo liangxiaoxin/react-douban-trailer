@@ -8,7 +8,7 @@ class MovieList extends Component {
   render() {
     console.log('aaa')
     return (
-      <h1>MovieList</h1>
+      <h1>所有影片</h1>
     );
   }
 }
