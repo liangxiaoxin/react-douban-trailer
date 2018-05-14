@@ -1,0 +1,59 @@
+.list-container {
+
+}
+
+.list-box {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 2%;
+  overflow: hidden;
+  width: 100%;
+  max-width: 660px;
+  .item {
+    width: 33.33%;
+    padding: 0 4%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    h3 {
+      font-size: 13px;
+      font-weight: normal;
+      padding: 5px 0 0;
+      color: #494949;
+      text-align: center;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+.remark {
+  height: 16px;
+  font-size: 12px;
+  padding-top: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .rating-stars {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .rating-star {
+    display: inline-block;
+    margin-right: 1px;
+  }
+  .rate {
+    margin-left: 3px;
+  }
+}
+.rating-star-small-full {
+  width: 10px;
+  height: 10px;
+  background-size: 10px 10px;
+  background-image: url(../../assets/images/rating-star-full.png);
+}
+.rating-star-small-empty {
+  width: 10px;
+  height: 10px;
+  background-size: 10px 10px;
+  background-image: url(../../assets/images/rating-star-empty.png);
+}

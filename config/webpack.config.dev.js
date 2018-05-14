@@ -187,13 +187,13 @@ module.exports = {
                 },
               },
               {
-                loader: require.resolve('less-loader') // compiles Less to CSS
-              },
-              {
                 loader: 'px2rem-loader',
                 options: {
                   remUnit: 37.5
                 }
+              },
+              {
+                loader: require.resolve('less-loader') // compiles Less to CSS
               }
             ],
           },

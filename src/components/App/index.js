@@ -6,6 +6,9 @@ import {
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state={
+      currentIndex:0
+    }
   }
   render() {
     return (
@@ -14,10 +17,10 @@ class App extends Component {
           <h1 className={'app-title'}>豆瓣电影</h1>
           <nav>
             <ul className={'header-nav'}>
-              <li>
-                <NavLink to="/movie">所有影片</NavLink>
+              <li >
+                <NavLink to="/all">所有影片</NavLink>
               </li>
-              <li>
+              <li >
                 <NavLink to="/tags">分类</NavLink>
               </li>
               <li>
