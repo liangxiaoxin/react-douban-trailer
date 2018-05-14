@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {getUserInfo} from '../api'
+import {getUserInfo} from '../../api'
 class About extends Component {
   constructor(props) {
     super(props);
