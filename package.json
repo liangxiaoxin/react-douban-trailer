@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "amfe-flexible": "^2.2.1",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
     "babel-core": "6.26.0",
@@ -95,7 +96,8 @@
   },
   "devDependencies": {
     "less": "^3.0.2",
-    "less-loader": "^4.1.0"
+    "less-loader": "^4.1.0",
+    "px2rem-loader": "^0.1.9"
   },
   "proxy": "http://122.114.59.155:8021"
 }
