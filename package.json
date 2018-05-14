@@ -99,5 +99,5 @@
     "less-loader": "^4.1.0",
     "px2rem-loader": "^0.1.9"
   },
-  "proxy": "http://122.114.59.155:8021"
+  "proxy": "http://localhost:5001"
 }

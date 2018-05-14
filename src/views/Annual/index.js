@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {getUserInfo} from '../../api'
+import {getMovieList} from '../../api'
 class Annual extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    getUserInfo().then((res)=>{
+    getMovieList().then((res)=>{
       console.log(res);
     })
     return (

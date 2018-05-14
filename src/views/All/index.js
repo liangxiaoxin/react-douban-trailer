@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import exam from '../../assets/images/exam.jpg'
 import './index.less'
+import {getMovieList} from "../../api";
 // import ratingStarEmpty from '../../assets/images/rating-star-empty.png'
 // import ratingStarFull from '../../assets/images/rating-star-full.png'
 
@@ -12,8 +13,15 @@ class All extends Component {
       movieList : [{title:'后来的fdfdfdf我们1',rate:7.5},{title:'bilibili',rate:7.5},{title:'后来的我们3',rate:7.5},{title:'后来的我2们',rate:7.5},{title:'后来4的我们',rate:7.5}]
     }
   }
+  componentWillMount() {
+    getMovieList().then((res)=>{
+      this.setState({
+        movieList:res.data
+      })
+    })
+
+  }
   render() {
-    console.log('aaa')
     return (
       <div>
         <h1 className={'title'}>所有影片</h1>
@@ -22,7 +30,7 @@ class All extends Component {
             {
               this.state.movieList.map((item,index)=>
                 <li key={item.title} className={'item'}>
-                  <img className={'cover'} src={exam} alt=""/>
+                  <img className={'cover'} src={item.poster} alt=""/>
                   <h3>{item.title}</h3>
                   <p className={'remark'}>
                     <span className={'rating-stars'}>
@@ -32,7 +40,7 @@ class All extends Component {
                       <span className={'rating-star rating-star-small-full'}></span>
                       <span className={'rating-star rating-star-small-empty'}></span>
                     </span>
-                    <span className={'rate'}>5.5</span>
+                    <span className={'rate'}>{item.rate}</span>
                   </p>
                 </li>
               )
