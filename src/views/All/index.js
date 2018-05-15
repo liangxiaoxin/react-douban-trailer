@@ -1,25 +1,41 @@
 import React, { Component } from 'react';
-import exam from '../../assets/images/exam.jpg'
 import './index.less'
 import {getMovieList} from "../../api";
-// import ratingStarEmpty from '../../assets/images/rating-star-empty.png'
-// import ratingStarFull from '../../assets/images/rating-star-full.png'
-
+import {getScrollHeight, getClientHeight} from '../../utils/utils'
 
 class All extends Component {
   constructor(props) {
     super(props);
     this.state={
-      movieList : [{title:'后来的fdfdfdf我们1',rate:7.5},{title:'bilibili',rate:7.5},{title:'后来的我们3',rate:7.5},{title:'后来的我2们',rate:7.5},{title:'后来4的我们',rate:7.5}]
+      movieList : [],
+      scrollTop:0,
+      isLoadMore:true
     }
   }
   componentWillMount() {
-    getMovieList().then((res)=>{
-      this.setState({
-        movieList:res.data
+    const loadData = () => {
+      getMovieList().then((res)=>{
+        let list = this.state.movieList.concat(res.data)
+        this.setState({movieList:list})
       })
-    })
-
+    }
+    loadData()
+    let _self = this
+    window.onscroll = function (e) {
+      _self.setState({
+        scrollTop : document.documentElement.scrollTop || document.body.scrollTop})
+      // 判断是否滚动到底部
+      if (_self.state.scrollTop + getClientHeight() == getScrollHeight()) {
+        console.log(123);
+        // 是否允许继续加载数据
+        if (_self.state.isLoadMore) {
+          console.log('滑动到底部');
+          setTimeout(()=>{
+            loadData()
+          },2000)
+        }
+      }
+    }
   }
   render() {
     const CalculateFullStar = (rate) =>  {
@@ -34,7 +50,7 @@ class All extends Component {
       }
       return (
         starAll.map((item,index)=>
-          item == 1 ? <span key={index} className={'rating-star rating-star-small-full'}></span> : <span key={index}  className={'rating-star rating-star-small-empty'}></span>
+          item === 1 ? <span key={index} className={'rating-star rating-star-small-full'}></span> : <span key={index}  className={'rating-star rating-star-small-empty'}></span>
         )
       );
     }
@@ -45,7 +61,7 @@ class All extends Component {
           <ul className={'list-box'}>
             {
               this.state.movieList.map((item,index)=>
-                <li key={item.title} className={'item'}>
+                <li key={index} className={'item'}>
                   <img className={'cover'} src={item.poster} alt=""/>
                   <h3>{item.title}</h3>
                   <p className={'remark'}>

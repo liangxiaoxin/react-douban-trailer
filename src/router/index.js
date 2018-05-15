@@ -18,7 +18,7 @@ const router = (
         <Route path="/all" component={All} />
         <Route path="/annual" component={Annual}></Route>
         <Route path="/tags" component={Tags}></Route>
-        {/*<Redirect from="/" to="/all"/> /!*重定向*!/*/}
+        <Redirect from="/" to="/all"/> {/*重定向*/}
       </Switch>
     </App>
   </Router>
