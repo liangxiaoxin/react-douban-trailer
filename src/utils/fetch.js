@@ -5,7 +5,7 @@ import axios from 'axios';
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: '/api', // api的base_url
+  baseURL: '/v2/movie', // api的base_url
   timeout: 30000                  // 请求超时时间
 });
 // 修改fatch axios 默认配置 加上token

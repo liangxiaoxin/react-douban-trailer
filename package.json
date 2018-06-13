@@ -29,6 +29,8 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "mobx": "^5.0.2",
+    "mobx-react": "^5.2.3",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -99,5 +101,5 @@
     "less-loader": "^4.1.0",
     "px2rem-loader": "^0.1.9"
   },
-  "proxy": "http://localhost:5001"
+  "proxy": "https://api.douban.com"
 }

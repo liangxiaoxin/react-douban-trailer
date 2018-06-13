@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tab切换Demo</title>
+</head>
+<style>
+  .tab-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .tab {
+    color: #000;
+    width: 100px;
+    cursor: pointer;
+    border: 1px solid #000000;
+    text-align: center;
+  }
+  .tab.active{
+    color: #00b600;
+  }
+  .tab-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .content {
+    color: #000000;
+    font-size: 15px;
+    display: none;
+  }
+  .content.active{
+    color: #dc5053;
+    display: block;
+
+  }
+</style>
+<body>
+<div class="tab-wrapper" id="tabWrapper">
+  <div class="tab active" id="tabActive">tab1</div>
+  <div class="tab active-1">tab2</div>
+  <div class="1   tab a-active">tab3</div>
+  <div class="tab">tab4</div>
+</div>
+<div class="tab-content" id="tabContent">
+  <div class="content active" id="contentActive">content1</div>
+  <div class="content active-1">content2</div>
+  <div class="content a-active">content3</div>
+  <div class="content">content4</div>
+</div>
+</body>
+<script>
+  window.onload = function () {
+
+    var $tab = document.getElementsByClassName('tab');
+    var $content = document.getElementsByClassName('content');
+    var $tabActive = document.getElementById('tabWrapper').getElementsByClassName('active')[0];
+    var $contentActive = document.getElementById('tabContent').getElementsByClassName('active')[0];
+    var tabLength = $tab.length;
+    var activeName = 'active';
+    for (let i = 0;i<tabLength;i++) {
+      let _this = $tab[i];
+      let _thisContent = $content[i];
+      _this.onclick = function () {
+        // 如果点击不是原来active的那个就做操作
+
+        if (!hasClass2(_this,activeName)) {
+          // 只操作active dom
+          removeClass2($tabActive,activeName);
+          removeClass2($contentActive,activeName);
+          // 只操作当前点击的dom
+          addClass(_this,activeName);
+          addClass(_thisContent,activeName);
+          // 更改active dom
+          $tabActive = _this;
+          $contentActive = _thisContent;
+        }
+      }
+    }
+    // 正则方法判断有没这个class
+    function hasClass(el,className) {
+      if (el.classList){
+        return  el.classList.contains(className);
+      } else {
+        return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+      }
+    }
+    // 把字符串转成数组 空格分开 看看这个数组有没有这个class
+    function hasClass2(el,className) {
+      return el.className.split(" ").includes(className)
+    }
+
+    function removeClass( el,className ){
+      if( hasClass( el,className ) ){
+        el.className = el.className.replace( new RegExp( "(\\s|^)" + className + "(\\s|$)" )," " );
+      }
+    }
+    function removeClass2(el, className) {
+      let arr = el.className.split(' ');
+      if (hasClass(el,className)) {
+        arr.splice(arr.indexOf("active"),1)
+        el.className = arr.join(' ')
+      }
+    }
+    function addClass( elements,className ){
+      if( !hasClass( elements,className ) ){
+        elements.className += " " + className;
+      }
+    }
+  }
+</script>
+</html>
